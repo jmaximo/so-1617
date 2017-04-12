@@ -29,20 +29,49 @@ void  main(int argc, char* argv[]) {
 		handle = GetCurrentProcess();
 
 	MEMORY_BASIC_INFORMATION info;
+	
 
-	VirtualQueryEx(handle, NULL, &info, MAX_PATH);
+	printf("MEM_FREE 0x10000 \n");
+	printf("MEM_COMMIT 0x1000 \n");
+	printf("MEM_RESERVE 0x2000 \n \n");
+
+
+	for (PBYTE iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter+= info.RegionSize)	{
+		
+		
+		printf("base allocation %x \n", info.AllocationBase);
+		printf("base address %x \n", info.BaseAddress);
+		printf("region size %x \n", info.RegionSize);
+		printf("region state %x \n \n", info.State);
+	
+
+	}
 
 	
+/*
+	int i = VirtualQueryEx(handle, &info, &info, MAX_PATH);
+
+	printf("first iter %i \n", i);
+	printf("base allocation %x \n", info.AllocationBase);
+	iter += info.RegionSize;
+
+	
+
+	i = VirtualQueryEx(handle, &info+iter, &info, MAX_PATH);
+
+	printf("second iter %i \n", i);
+	printf("base allocation %x \n", info.AllocationBase);
+*/
 /*
 	info -> BaseAddress
 	info -> AllocationBase
 	info -> RegionSize
 	info -> State
-*/
+
 	printProcessInfo(handle);
 	printf("Region Base Allocation %x \n", info.AllocationBase);
 	printf("size %x \n", info.RegionSize);
-
+*/
 	CloseHandle(handle);
 	getchar();
 }
