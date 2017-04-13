@@ -17,8 +17,6 @@ int printProcessInfo(HANDLE handle);
 
 void  main(int argc, char* argv[]) {
 
-//	myHandle curr;
-//	myHandle biggest;
 
 
 	HANDLE handle;
@@ -29,24 +27,64 @@ void  main(int argc, char* argv[]) {
 		handle = GetCurrentProcess();
 
 	MEMORY_BASIC_INFORMATION info;
+	myHandle curr, bigger;
 	
-
+	PBYTE iter = 0;
 	printf("MEM_FREE 0x10000 \n");
 	printf("MEM_COMMIT 0x1000 \n");
 	printf("MEM_RESERVE 0x2000 \n \n");
+	VirtualQueryEx(handle, iter, &info, sizeof(info));
+	curr.startAllocationBase = info.AllocationBase;
+	curr.currBlockBase = info.BaseAddress;
+	curr.totalsize = 0;
+	/*
+	printf("base allocation %x \n", info.AllocationBase);
+	printf("base address %x \n", info.BaseAddress);
+	printf("region size %x \n", info.RegionSize);
+	printf("region state %x \n \n", info.State);
 
+	printf("biggest region \n");
+	printf("base address %x \n", curr.startAllocationBase);
+	printf("Block base %x \n", curr.currBlockBase);
+	printf("Total size %x \n \n", curr.totalsize);
+	*/
 
-	for (PBYTE iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter+= info.RegionSize)	{
-		
-		
+	bigger = curr;
+	int count = 0;
+	for ( iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter+= info.RegionSize){		//while (sameProcess)
+
 		printf("base allocation %x \n", info.AllocationBase);
 		printf("base address %x \n", info.BaseAddress);
 		printf("region size %x \n", info.RegionSize);
 		printf("region state %x \n \n", info.State);
-	
-
 	}
+	for (iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter += info.RegionSize) {		//while (sameProcess)
 
+		if (curr.startAllocationBase == info.AllocationBase) {
+			if (info.State == MEM_RESERVE) {
+				curr.totalsize += info.RegionSize;
+				if (bigger.totalsize < curr.totalsize) {
+					bigger.currBlockBase = curr.currBlockBase;
+					bigger.startAllocationBase = curr.startAllocationBase;
+					bigger.totalsize = curr.totalsize;
+					maconha++;
+				}
+			}/*else {
+				curr.startAllocationBase = info.AllocationBase;
+				curr.currBlockBase = info.BaseAddress;
+				curr.totalsize = 0;
+			}*/
+		}
+		
+		
+	}
+	printf("biggest region \n");
+	printf("base address %x \n", curr.startAllocationBase);
+	printf("Block base %x \n", curr.currBlockBase);
+	printf("Total size %x \n \n", curr.totalsize);
+	printf("biggest was affected %i times", count);
+
+	
 	
 /*
 	int i = VirtualQueryEx(handle, &info, &info, MAX_PATH);
