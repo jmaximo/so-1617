@@ -21,8 +21,8 @@ void  main(int argc, char* argv[]) {
 
 	HANDLE handle;
 	if (argc > 1 )
-		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ , false,  atoi(argv[1]));
-//	handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, 12016);
+//		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ , false,  atoi(argv[1]));
+		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, 12708 );
 	else
 		handle = GetCurrentProcess();
 
@@ -52,37 +52,39 @@ void  main(int argc, char* argv[]) {
 	bigger = curr;
 	int count = 0;
 	for ( iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter+= info.RegionSize){		//while (sameProcess)
-
 		printf("base allocation %x \n", info.AllocationBase);
 		printf("base address %x \n", info.BaseAddress);
-		printf("region size %x \n", info.RegionSize);
+		printf("region size %u \n", info.RegionSize);
 		printf("region state %x \n \n", info.State);
+		count++;
 	}
 	for (iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter += info.RegionSize) {		//while (sameProcess)
 
-		if (curr.startAllocationBase == info.AllocationBase) {
-			if (info.State == MEM_RESERVE) {
+		if (curr.startAllocationBase == info.AllocationBase) {				//same Allocation
+			if (!(info.State == MEM_FREE)) {								// check state
 				curr.totalsize += info.RegionSize;
-				if (bigger.totalsize < curr.totalsize) {
+				if (bigger.totalsize < curr.totalsize) {					//update bigger if needed
 					bigger.currBlockBase = curr.currBlockBase;
 					bigger.startAllocationBase = curr.startAllocationBase;
 					bigger.totalsize = curr.totalsize;
-					maconha++;
+					count++;
 				}
-			}/*else {
-				curr.startAllocationBase = info.AllocationBase;
+			}
+		}
+		else {
+				curr.startAllocationBase = info.AllocationBase;				// get new curr to start over
 				curr.currBlockBase = info.BaseAddress;
 				curr.totalsize = 0;
-			}*/
 		}
+		
 		
 		
 	}
 	printf("biggest region \n");
-	printf("base address %x \n", curr.startAllocationBase);
-	printf("Block base %x \n", curr.currBlockBase);
-	printf("Total size %x \n \n", curr.totalsize);
-	printf("biggest was affected %i times", count);
+	printf("base address %x \n", bigger.startAllocationBase);
+	printf("Block base %x \n", bigger.currBlockBase);
+	printf("Total size %u \n \n", bigger.totalsize);
+	printf("has %i regions", count);
 
 	
 	
