@@ -1,19 +1,10 @@
-﻿  Source.cpp
-c:\so16-17v\so\so\source.cpp(55): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'PVOID'
-c:\so16-17v\so\so\source.cpp(55): warning C4313: 'printf': '%x' in format string conflicts with argument 1 of type 'PVOID'
-c:\so16-17v\so\so\source.cpp(56): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'PVOID'
-c:\so16-17v\so\so\source.cpp(56): warning C4313: 'printf': '%x' in format string conflicts with argument 1 of type 'PVOID'
-c:\so16-17v\so\so\source.cpp(57): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type 'SIZE_T'
-  c:\so16-17v\so\so\source.cpp(57): note: consider using '%llu' in the format string
-  c:\so16-17v\so\so\source.cpp(57): note: consider using '%Iu' in the format string
-  c:\so16-17v\so\so\source.cpp(57): note: consider using '%I64u' in the format string
-c:\so16-17v\so\so\source.cpp(84): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'PVOID'
-c:\so16-17v\so\so\source.cpp(84): warning C4313: 'printf': '%x' in format string conflicts with argument 1 of type 'PVOID'
-c:\so16-17v\so\so\source.cpp(85): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'PVOID'
-c:\so16-17v\so\so\source.cpp(85): warning C4313: 'printf': '%x' in format string conflicts with argument 1 of type 'PVOID'
-c:\so16-17v\so\so\source.cpp(86): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type 'SIZE_T'
-  c:\so16-17v\so\so\source.cpp(86): note: consider using '%llu' in the format string
-  c:\so16-17v\so\so\source.cpp(86): note: consider using '%Iu' in the format string
-  c:\so16-17v\so\so\source.cpp(86): note: consider using '%I64u' in the format string
+﻿  Exe5.cpp
+c:\so16-17v\so\so\exe5.cpp(25): warning C4091: 'typedef ': ignored on left of 'ifdEnt' when no variable is declared
+c:\so16-17v\so\so\exe5.cpp(30): warning C4091: 'typedef ': ignored on left of 'ifd' when no variable is declared
+c:\so16-17v\so\so\exe5.cpp(36): warning C4091: 'typedef ': ignored on left of 'TIFF' when no variable is declared
+c:\so16-17v\so\so\exe5.cpp(43): warning C4091: 'typedef ': ignored on left of 'DATA' when no variable is declared
+c:\so16-17v\so\so\exe5.cpp(69): warning C4091: 'typedef ': ignored on left of 'MYINFO' when no variable is declared
+c:\so16-17v\so\so\exe5.cpp(110): warning C4311: 'type cast': pointer truncation from 'PXPTO' to 'INT'
+c:\so16-17v\so\so\exe5.cpp(110): warning C4302: 'type cast': truncation from 'PXPTO' to 'INT'
   so.vcxproj -> C:\SO16-17v\so\x64\Debug\so.exe
   so.vcxproj -> C:\SO16-17v\so\x64\Debug\so.pdb (Partial PDB)

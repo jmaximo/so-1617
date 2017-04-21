@@ -14,7 +14,7 @@ struct myHandle {
 	SIZE_T totalsize;
 } typedef myHandle;
 int printProcessInfo(HANDLE handle);
-
+/*
 void  main(int argc, char* argv[]) {
 
 
@@ -22,7 +22,7 @@ void  main(int argc, char* argv[]) {
 	HANDLE handle;
 	if (argc > 1 )
 //		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ , false,  atoi(argv[1]));
-		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, 12708 );
+		handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, 4700 );
 	else
 		handle = GetCurrentProcess();
 
@@ -48,7 +48,7 @@ void  main(int argc, char* argv[]) {
 	printf("Block base %x \n", curr.currBlockBase);
 	printf("Total size %x \n \n", curr.totalsize);
 	*/
-
+/*
 	bigger = curr;
 	int count = 0;
 	for ( iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter+= info.RegionSize){		//while (sameProcess)
@@ -60,10 +60,10 @@ void  main(int argc, char* argv[]) {
 	}
 	for (iter = 0; VirtualQueryEx(handle, iter, &info, sizeof(info)) != 0; iter += info.RegionSize) {		//while (sameProcess)
 
-		if (curr.startAllocationBase == info.AllocationBase) {				//same Allocation
-			if (!(info.State == MEM_FREE)) {								// check state
+		if (curr.startAllocationBase == info.AllocationBase) {												//same Allocation
+			if (!(info.State == MEM_FREE)) {																// check state
 				curr.totalsize += info.RegionSize;
-				if (bigger.totalsize < curr.totalsize) {					//update bigger if needed
+				if (bigger.totalsize < curr.totalsize) {													//update bigger if needed
 					bigger.currBlockBase = curr.currBlockBase;
 					bigger.startAllocationBase = curr.startAllocationBase;
 					bigger.totalsize = curr.totalsize;
@@ -72,7 +72,7 @@ void  main(int argc, char* argv[]) {
 			}
 		}
 		else {
-				curr.startAllocationBase = info.AllocationBase;				// get new curr to start over
+				curr.startAllocationBase = info.AllocationBase;												// get new curr to start over
 				curr.currBlockBase = info.BaseAddress;
 				curr.totalsize = 0;
 		}
@@ -111,11 +111,11 @@ void  main(int argc, char* argv[]) {
 	printProcessInfo(handle);
 	printf("Region Base Allocation %x \n", info.AllocationBase);
 	printf("size %x \n", info.RegionSize);
-*/
+*//*
 	CloseHandle(handle);
 	getchar();
 }
-
+*/
 
 int printProcessInfo(HANDLE handle) {
 	TCHAR name[MAX_PATH];
