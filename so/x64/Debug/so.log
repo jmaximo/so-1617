@@ -1,10 +1,20 @@
-﻿  Exe5.cpp
-c:\so16-17v\so\so\exe5.cpp(25): warning C4091: 'typedef ': ignored on left of 'ifdEnt' when no variable is declared
-c:\so16-17v\so\so\exe5.cpp(30): warning C4091: 'typedef ': ignored on left of 'ifd' when no variable is declared
-c:\so16-17v\so\so\exe5.cpp(36): warning C4091: 'typedef ': ignored on left of 'TIFF' when no variable is declared
-c:\so16-17v\so\so\exe5.cpp(43): warning C4091: 'typedef ': ignored on left of 'DATA' when no variable is declared
-c:\so16-17v\so\so\exe5.cpp(69): warning C4091: 'typedef ': ignored on left of 'MYINFO' when no variable is declared
-c:\so16-17v\so\so\exe5.cpp(110): warning C4311: 'type cast': pointer truncation from 'PXPTO' to 'INT'
-c:\so16-17v\so\so\exe5.cpp(110): warning C4302: 'type cast': truncation from 'PXPTO' to 'INT'
-  so.vcxproj -> C:\SO16-17v\so\x64\Debug\so.exe
-  so.vcxproj -> C:\SO16-17v\so\x64\Debug\so.pdb (Partial PDB)
+﻿Build started 4/23/2017 5:17:51 PM.
+     1>Project "C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\so\so.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt Exe5.cpp
+         Exe5.cpp
+     1>Exe5.cpp(25): warning C4091: 'typedef ' : ignored on left of 'ifdEnt' when no variable is declared
+     1>Exe5.cpp(30): warning C4091: 'typedef ' : ignored on left of 'ifd' when no variable is declared
+     1>Exe5.cpp(36): warning C4091: 'typedef ' : ignored on left of 'TIFF' when no variable is declared
+     1>Exe5.cpp(43): warning C4091: 'typedef ' : ignored on left of 'DATA' when no variable is declared
+     1>Exe5.cpp(69): warning C4091: 'typedef ' : ignored on left of 'MYINFO' when no variable is declared
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\x64\Debug\so.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\x64\Debug\so.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\x64\Debug\so.lib" /MACHINE:X64 x64\Debug\Exe5.obj
+         x64\Debug\exe6.obj
+         x64\Debug\Source.obj
+         so.vcxproj -> C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\x64\Debug\so.exe
+     1>Done Building Project "C:\Users\david\Documents\ISEL\SO\1617v\Rep\so-1617\so\so.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.56
